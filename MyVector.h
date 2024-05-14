@@ -14,7 +14,7 @@ private:
     const MyVector<T>& object;
 public:
     explicit Iterator<T> (const MyVector<T>& obj, T* cur):object(obj), cur(cur){};
-    Iterator<T> next() const { return Iterator(object, cur + 1); }
+    Iterator<T> next() const { ++cur; return *this; }
     T value() const { return *cur; }
     [[nodiscard]] bool is_end() const { return *this == object.end(); }
     Iterator<T> &operator++() { ++cur; return *this; }
